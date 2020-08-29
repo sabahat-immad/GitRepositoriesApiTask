@@ -55,8 +55,13 @@ class GitRepoActivity : AppCompatActivity() {
         val responseLiveData = gitRepoViewModel.getLastCommit(url)
 
         responseLiveData.observe(this, Observer {
-            val commits = it.body()?.toList()
+            val commits = it.body()?.listIterator()?.next()
+            if (commits != null) {
+                adapter.setLastCommit(commits)
+                adapter.notifyDataSetChanged()
+            }
             Log.i("LAST_COMMIT", commits.toString())
+
         })
     }
 }
