@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">Git Repo Task</string>
+    <string name="app_name">Git Repositories Task</string>
+
+    <string-array name="Users">
+        <item>Android</item>
+
+    </string-array>
 </resources>

@@ -1,4 +1,4 @@
-package com.saba.gitrepotask.data.retrofit
+package com.saba.gitrepotask.retrofit
 
 import com.saba.gitrepotask.data.model.Commits
 import com.saba.gitrepotask.data.model.GitRepositories

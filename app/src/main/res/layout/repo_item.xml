@@ -35,9 +35,10 @@
                     android:layout_marginEnd="10dp"
                     android:layout_marginBottom="5dp"
                     android:layout_toLeftOf="@+id/star_tv"
-                    android:textColor="@android:color/secondary_text_light"
+                    android:textColor="@color/colorPrimary"
                     android:textSize="20sp"
-                    tools:text="Repo name" />
+                    tools:text="Repo name"
+                    android:textStyle="bold"/>
 
                 <TextView
                     android:id="@+id/star_tv"
@@ -86,53 +87,46 @@
                     android:layout_margin="10dp"
                     android:text="Last commit:"
                     android:textColor="@android:color/secondary_text_light"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    android:textStyle="bold"/>
 
-                <ProgressBar
-                    android:id="@+id/loading_spinner"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:indeterminateTintMode="src_atop"
-                    android:indeterminateTint="@color/colorPrimary"
-                    android:layout_gravity="center"
-                    android:layout_toRightOf="@id/lc_tv"
-                    android:layout_below="@id/desc_tv"/>
+
 
 
                 <TextView
-                    android:id="@+id/author_tv"
+                    android:id="@+id/committer_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/lc_tv"
                     android:layout_alignParentLeft="true"
                     android:layout_margin="10dp"
                     android:textColor="@android:color/secondary_text_light"
-                    android:textSize="12sp"
+                    android:textSize="16sp"
                     tools:text="author" />
 
                 <TextView
                     android:id="@+id/date_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/lc_tv"
-                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/committer_tv"
+                    android:layout_alignParentLeft="true"
                     android:layout_margin="10dp"
                     android:textColor="@android:color/secondary_text_light"
-                    android:textSize="12sp"
+                    android:textSize="16sp"
                     tools:text="date" />
 
                 <TextView
                     android:id="@+id/message_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/author_tv"
+                    android:layout_below="@+id/date_tv"
                     android:layout_alignParentLeft="true"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="0dp"
                     android:layout_marginEnd="10dp"
                     android:layout_marginBottom="10dp"
                     android:textColor="@android:color/secondary_text_light"
-                    android:textSize="12sp"
+                    android:textSize="16sp"
                     tools:text="commit message" />
 
             </RelativeLayout>

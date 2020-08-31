@@ -9,10 +9,10 @@ import com.saba.gitrepotask.data.model.CommitsItem
 import com.saba.gitrepotask.data.model.GitRepositoriesItem
 import com.saba.gitrepotask.databinding.RepoItemBinding
 
-class GitRepoRcAdapter(private val commitCallback: (String) -> Unit) : RecyclerView.Adapter<MyViewHolder>() {
+class GitRepoRcAdapter(private val commitCallback: (GitRepositoriesItem, Int) -> Unit) : RecyclerView.Adapter<MyViewHolder>() {
 
     private val gitRepoList = ArrayList<GitRepositoriesItem>()
-    private var lastCommit : CommitsItem? = null
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -26,7 +26,7 @@ class GitRepoRcAdapter(private val commitCallback: (String) -> Unit) : RecyclerV
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.bind(gitRepoList[position], commitCallback, lastCommit)
+        holder.bind(gitRepoList[position], commitCallback, position)
     }
 
     fun setList(gitList: List<GitRepositoriesItem>?){
@@ -34,21 +34,32 @@ class GitRepoRcAdapter(private val commitCallback: (String) -> Unit) : RecyclerV
         gitRepoList.addAll(gitList!!)
     }
 
-    fun setLastCommit(_lastCommit : CommitsItem){
-        this.lastCommit = _lastCommit
+    fun updateList(gitRepositoriesItem: GitRepositoriesItem, position: Int){
+        gitRepoList.removeAt(position)
+        gitRepoList.add(position, gitRepositoriesItem)
     }
+
 }
 
 class MyViewHolder(val binding: RepoItemBinding) : RecyclerView.ViewHolder(binding.root){
-    fun bind(gitRepositoriesItem: GitRepositoriesItem, commitCallback: (String) -> Unit, lastCommit: CommitsItem?){
+    fun bind(gitRepositoriesItem: GitRepositoriesItem, commitCallback: (GitRepositoriesItem, Int) -> Unit,
+    position: Int){
         binding.nameTv.text = gitRepositoriesItem.name
         binding.starTv.text = "${gitRepositoriesItem.stargazers_count} stars"
         binding.descTv.text = gitRepositoriesItem.description
         binding.createdOnTv.text = "Created at ${gitRepositoriesItem.created_at}"
-        commitCallback(gitRepositoriesItem.commits_url)
 
-        if(lastCommit != null){
-            binding.authorTv.text = lastCommit.commit.author.name
+
+        if(gitRepositoriesItem.myCommitterName == null || gitRepositoriesItem.myCommitterName == ""){
+            commitCallback(gitRepositoriesItem, position)
         }
+        else{
+            binding.committerTv.text = "Author: ${gitRepositoriesItem.myCommitterName}"
+            binding.dateTv.text = "Committed on ${gitRepositoriesItem.myCommitDate}"
+            binding.messageTv.text = "Commit message: ${gitRepositoriesItem.myCommitMessage}"
+
+        }
+
+
     }
 }

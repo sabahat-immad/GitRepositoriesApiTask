@@ -73,5 +73,10 @@ data class GitRepositoriesItem(
     val updated_at: String,
     val url: String,
     val watchers: Int,
-    val watchers_count: Int
+    val watchers_count: Int,
+
+    //last commits
+    var myCommitterName : String,
+    var myCommitDate: String,
+    var myCommitMessage: String
 )

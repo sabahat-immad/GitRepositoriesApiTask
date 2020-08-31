@@ -12,13 +12,37 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.GitRepoActivity">
+        tools:context=".ui.GitRepoActivity"
+        android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Git user ANDROID "
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="16sp"
+                android:layout_margin="10dp"
+                android:layout_gravity="center_horizontal"
+                ></TextView>
+
+
+
+        <ProgressBar
+            android:id="@+id/loading_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminateTintMode="src_atop"
+            android:indeterminateTint="@color/colorPrimary"
+            android:layout_gravity="center"
+            />
 
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/git_recyclerView"
-            android:layout_margin="5dp"/>
+            android:layout_margin="0dp"/>
 
     </LinearLayout>
 </layout>

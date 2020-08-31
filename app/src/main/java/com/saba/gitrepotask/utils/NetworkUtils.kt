@@ -15,6 +15,7 @@ object NetworkUtils {
 
         val activeNetwork: NetworkInfo? = connectivityManager.activeNetworkInfo
 
+
         if (activeNetwork != null && activeNetwork.isConnected) {
             isConnected = true
         }

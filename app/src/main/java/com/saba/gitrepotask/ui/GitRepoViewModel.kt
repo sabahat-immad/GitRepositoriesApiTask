@@ -9,6 +9,7 @@ import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
 import com.saba.gitrepotask.data.model.Commits
 import com.saba.gitrepotask.data.model.GitRepositories
+import com.saba.gitrepotask.data.model.GitRepositoriesItem
 import kotlinx.coroutines.launch
 import retrofit2.Response
 
@@ -26,10 +27,11 @@ class GitRepoViewModel(private val gitRepoMVVMRepository: GitRepoMVVMRepository)
         return data
     }
 
-    fun getLastCommit(url : String) : LiveData<Response<Commits>>{
+    fun getLastCommit(gitRepositoriesItem: GitRepositoriesItem) : LiveData<Response<Commits>>{
+
         lateinit var data : LiveData<Response<Commits>>
         viewModelScope.launch {
-            val newUrl = url.dropLast(6)
+            val newUrl = gitRepositoriesItem.commits_url.dropLast(6)
              data =  liveData {
                 val response = gitRepoMVVMRepository.getLastCommit(newUrl)
                 emit(response)
