@@ -40,6 +40,8 @@
                     tools:text="Repo name"
                     android:textStyle="bold"/>
 
+
+
                 <TextView
                     android:id="@+id/star_tv"
                     android:layout_width="wrap_content"
@@ -102,7 +104,17 @@
                     android:layout_margin="10dp"
                     android:textColor="@android:color/secondary_text_light"
                     android:textSize="16sp"
-                    tools:text="author" />
+                    tools:text="Committer:" />
+
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:id="@+id/committer_dp"
+                    android:scaleType="fitXY"
+                    android:adjustViewBounds="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignTop="@+id/lc_tv"
+                    />
 
                 <TextView
                     android:id="@+id/date_tv"

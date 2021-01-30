@@ -1,8 +1,19 @@
 <resources>
-    <string name="app_name">Git Repositories Task</string>
+    <string name="app_name">Git Repositories List</string>
+    <string name="user_dropdown_promt">Select a Git User to view their public repositories</string>
 
     <string-array name="Users">
         <item>Android</item>
+        <item>mojombo</item>
+        <item>defunkt</item>
+        <item>pjhyett</item>
+        <item>technoweenie</item>
+        <item>caged</item>
+        <item>topfunky</item>
+        <item>roland</item>
+        <item>lukas</item>
+        <item>tomtt</item>
 
     </string-array>
+
 </resources>
