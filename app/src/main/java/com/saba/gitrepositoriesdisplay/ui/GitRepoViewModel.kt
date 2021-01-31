@@ -1,7 +1,7 @@
 package com.saba.gitrepositoriesdisplay.ui
 
 import androidx.lifecycle.ViewModel
-import com.saba.gitrepositoriesdisplay.data.repository.GitRepoMVVMRepository
+import com.saba.gitrepositoriesdisplay.data.repository.GitRepoMVVMRepositoryImpl
 import androidx.databinding.Observable
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
@@ -9,6 +9,7 @@ import androidx.lifecycle.viewModelScope
 import com.saba.gitrepositoriesdisplay.data.model.Commits
 import com.saba.gitrepositoriesdisplay.data.model.GitRepositories
 import com.saba.gitrepositoriesdisplay.data.model.GitRepositoriesItem
+import com.saba.gitrepositoriesdisplay.data.repository.GitRepoMVVMRepository
 import kotlinx.coroutines.launch
 import retrofit2.Response
 

@@ -12,7 +12,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.saba.gitrepositoriesdisplay.R
-import com.saba.gitrepositoriesdisplay.data.repository.GitRepoMVVMRepository
+import com.saba.gitrepositoriesdisplay.data.repository.GitRepoMVVMRepositoryImpl
 import com.saba.gitrepositoriesdisplay.data.model.GitRepositoriesItem
 import com.saba.gitrepositoriesdisplay.data.retrofit.GitRepoService
 import com.saba.gitrepositoriesdisplay.data.retrofit.RetrofitInstance
@@ -47,7 +47,7 @@ class GitRepoActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
     private fun setupViewModel() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         retService = RetrofitInstance.getRetrofitInstance().create(GitRepoService::class.java)
-        val repository : GitRepoMVVMRepository = GitRepoMVVMRepository(retService)
+        val repository : GitRepoMVVMRepositoryImpl = GitRepoMVVMRepositoryImpl(retService)
         val factory = GitRepoViewModelFactory(repository)
         gitRepoViewModel = ViewModelProvider(this,factory).get(GitRepoViewModel::class.java)
         binding.gitRepoViewModel = gitRepoViewModel
