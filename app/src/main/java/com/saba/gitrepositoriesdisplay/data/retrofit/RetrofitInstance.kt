@@ -1,4 +1,4 @@
-package com.saba.gitrepositoriesdisplay.retrofit
+package com.saba.gitrepositoriesdisplay.data.retrofit
 
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient

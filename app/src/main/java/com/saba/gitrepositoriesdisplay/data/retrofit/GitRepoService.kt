@@ -1,4 +1,4 @@
-package com.saba.gitrepositoriesdisplay.retrofit
+package com.saba.gitrepositoriesdisplay.data.retrofit
 
 import com.saba.gitrepositoriesdisplay.data.model.Commits
 import com.saba.gitrepositoriesdisplay.data.model.GitRepositories

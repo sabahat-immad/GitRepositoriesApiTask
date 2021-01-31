@@ -14,8 +14,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.saba.gitrepositoriesdisplay.R
 import com.saba.gitrepositoriesdisplay.data.repository.GitRepoMVVMRepository
 import com.saba.gitrepositoriesdisplay.data.model.GitRepositoriesItem
-import com.saba.gitrepositoriesdisplay.retrofit.GitRepoService
-import com.saba.gitrepositoriesdisplay.retrofit.RetrofitInstance
+import com.saba.gitrepositoriesdisplay.data.retrofit.GitRepoService
+import com.saba.gitrepositoriesdisplay.data.retrofit.RetrofitInstance
 import com.saba.gitrepositoriesdisplay.databinding.ActivityMainBinding
 import com.saba.gitrepositoriesdisplay.factory.GitRepoViewModelFactory
 import com.saba.gitrepositoriesdisplay.utils.EspressoIdlingResource
@@ -36,6 +36,15 @@ class GitRepoActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
 
         super.onCreate(savedInstanceState)
 
+        setupViewModel()
+        initUserDropDown()
+        initRecyclerview()
+        getGitRepositories(gitUsers[0])
+
+
+    }
+
+    private fun setupViewModel() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         retService = RetrofitInstance.getRetrofitInstance().create(GitRepoService::class.java)
         val repository : GitRepoMVVMRepository = GitRepoMVVMRepository(retService)
@@ -43,12 +52,6 @@ class GitRepoActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
         gitRepoViewModel = ViewModelProvider(this,factory).get(GitRepoViewModel::class.java)
         binding.gitRepoViewModel = gitRepoViewModel
         binding.lifecycleOwner = this
-
-        initUserDropDown()
-        initRecyclerview()
-        getGitRepositories(gitUsers[0])
-
-
     }
 
     private fun initUserDropDown() {
@@ -75,15 +78,6 @@ class GitRepoActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
             gitSelected, pos)}
         binding.gitRecyclerView.adapter = adapter
 
-        /*if(NetworkUtils.hasNetwork(this)!!){
-            getGitRepositories(gitUsers[0])
-        }
-        else{
-            binding.loadingSpinner.visibility = View.GONE
-            showToast("Oops, looks like you are not connected to " +
-                    "the internet.",Toast.LENGTH_SHORT)
-        }*/
-
     }
     private fun getGitRepositories(gitUser : String){
         if(NetworkUtils.hasNetwork(this)!!) {
@@ -93,7 +87,7 @@ class GitRepoActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
             responseLiveData.observe(this, Observer {
                 binding.loadingSpinner.visibility = View.GONE
                 EspressoIdlingResource.decrement()
-                if (it.body() != null) {
+                if (it.body() != null && it.code() == 200) {
                     val gitList = it.body()?.toList()
                     adapter.setList(gitList)
                     adapter.notifyDataSetChanged()

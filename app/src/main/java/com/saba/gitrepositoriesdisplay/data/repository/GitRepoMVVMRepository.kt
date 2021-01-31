@@ -2,7 +2,7 @@ package com.saba.gitrepositoriesdisplay.data.repository
 
 import com.saba.gitrepositoriesdisplay.data.model.Commits
 import com.saba.gitrepositoriesdisplay.data.model.GitRepositories
-import com.saba.gitrepositoriesdisplay.retrofit.GitRepoService
+import com.saba.gitrepositoriesdisplay.data.retrofit.GitRepoService
 import retrofit2.Response
 
 class GitRepoMVVMRepository(private val gitRepoService: GitRepoService) {
