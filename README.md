@@ -2,7 +2,7 @@
 
 ## About this project:
 
-* Its a single activity app that uses Git REST Api(https://api.github.com) to fetch the public repositories of any selected git user. It shows the list of repositories of the selected git user in a RecyclerView,
+* An app that uses Git REST Api(https://api.github.com) to fetch the public repositories of any selected git user. It shows the list of repositories of the selected git user in a RecyclerView,
 then gets the "last commit" data for each git repository asynchronously and updates the list (RecyclerView).
 
 * The App has Clean Architecture, follows MVVM pattern and TDD(Test Driven Development).
