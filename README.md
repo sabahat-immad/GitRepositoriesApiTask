@@ -6,7 +6,7 @@
 then gets the "last commit" data for each git repository asynchronously and updates the list (RecyclerView).
 
 * The App has Clean Architecture, follows MVVM pattern and TDD(Test Driven Development).
-* Common use-cases of Kotlin Coroutines in Android has been implemented in this project.
+* Common use-cases of Kotlin Coroutines for network calls in Android has been implemented in this project.
 * The ViewModel uses LiveData and Data Binding to update the UI. 
 * Also, learned and implemented writing Unit-Test for ViewModel which uses Kotlin Coroutines using Mockito.
 * Created UI tests for the Activity using Esspresso.
